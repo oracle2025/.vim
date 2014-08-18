@@ -12,6 +12,7 @@ Bundle 'gmarik/vundle'
 "
 " original repos on github
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-vinegar'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
