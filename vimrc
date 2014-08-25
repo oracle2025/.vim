@@ -27,4 +27,5 @@ set autoindent
 colorscheme blue
 set cindent
 autocmd FileType cpp setlocal expandtab shiftwidth=4 softtabstop=4
+map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
