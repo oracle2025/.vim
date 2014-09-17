@@ -28,6 +28,7 @@ set hlsearch
 set autoindent
 colorscheme blue
 set cindent
+set foldmethod=syntax
 autocmd FileType cpp setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 copyindent preserveindent
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
