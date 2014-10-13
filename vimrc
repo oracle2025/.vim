@@ -26,7 +26,14 @@ filetype plugin indent on     " required!
 
 set hlsearch
 set autoindent
-colorscheme blue
+
+if has('gui_running')
+	colorscheme blue
+else
+	set t_Co=256
+	syntax on
+endif
+
 set cindent
 set foldmethod=syntax
 set guifont=FixedSC\ 10
