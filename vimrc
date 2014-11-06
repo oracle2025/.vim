@@ -51,3 +51,6 @@ let mapleader = ","
 "let g:xptemplate_key = '<C-j>'
 "let g:xptemplate_key_force_pum = '<C-r><C-j>'
 "let g:xptemplate_vars = "BRfun= "
+if has("mac")
+	let g:protodefctagsexe = '/usr/local/bin/ctags'
+endif
