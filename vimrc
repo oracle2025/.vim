@@ -15,6 +15,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-vinegar'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'msanders/snipmate.vim'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -22,6 +23,7 @@ Bundle 'editorconfig/editorconfig-vim'
 " non github repos
 
 filetype plugin indent on     " required!
+filetype plugin on
 
 
 set hlsearch
