@@ -29,6 +29,7 @@ set autoindent
 
 if has('gui_running')
 	colorscheme blue
+	set nu
 else
 	set t_Co=256
 	syntax on
