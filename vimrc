@@ -15,7 +15,10 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-vinegar'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'editorconfig/editorconfig-vim'
-Bundle 'msanders/snipmate.vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
 "Bundle 'drmingdrmer/xptemplate'
 Bundle 'derekwyatt/vim-fswitch'
 Bundle 'derekwyatt/vim-protodef'
@@ -47,6 +50,9 @@ autocmd FileType cpp setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 c
 "map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 nmap <F4> :FSHere<cr>
 let mapleader = ","
+
+imap ss <esc>a<Plug>snipMateNextOrTrigger
+smap ss <Plug>snipMateNextOrTrigger
 
 "let g:xptemplate_key = '<C-j>'
 "let g:xptemplate_key_force_pum = '<C-r><C-j>'
