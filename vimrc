@@ -51,8 +51,8 @@ autocmd FileType cpp setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 c
 nmap <F4> :FSHere<cr>
 let mapleader = ","
 
-imap ss <esc>a<Plug>snipMateNextOrTrigger
-smap ss <Plug>snipMateNextOrTrigger
+imap SS <esc>a<Plug>snipMateNextOrTrigger
+smap SS <Plug>snipMateNextOrTrigger
 
 "let g:xptemplate_key = '<C-j>'
 "let g:xptemplate_key_force_pum = '<C-r><C-j>'
