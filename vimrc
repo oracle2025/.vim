@@ -26,7 +26,7 @@ Bundle 'tikhomirov/vim-glsl'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
-Bundle 'webBrowser'
+"Bundle 'webBrowser'
 
 " non github repos
 
