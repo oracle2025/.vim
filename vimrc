@@ -23,6 +23,7 @@ Bundle 'honza/vim-snippets'
 Bundle 'derekwyatt/vim-fswitch'
 Bundle 'derekwyatt/vim-protodef'
 Bundle 'tikhomirov/vim-glsl'
+Bundle 'Z1MM32M4N/vim-superman'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
