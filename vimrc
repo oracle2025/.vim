@@ -28,6 +28,7 @@ Bundle 'Z1MM32M4N/vim-superman'
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
 "Bundle 'webBrowser'
+Bundle 'DoxygenToolkit.vim'
 
 " non github repos
 
