@@ -24,6 +24,8 @@ Bundle 'derekwyatt/vim-fswitch'
 Bundle 'derekwyatt/vim-protodef'
 Bundle 'tikhomirov/vim-glsl'
 Bundle 'Z1MM32M4N/vim-superman'
+Bundle 'edkolev/tmuxline.vim'
+Bundle 'bling/vim-airline'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -63,4 +65,5 @@ smap SS <Plug>snipMateNextOrTrigger
 "let g:xptemplate_vars = "BRfun= "
 if has("mac")
 	let g:protodefctagsexe = '/usr/local/bin/ctags'
+	set guifont=Menlo\ for\ Powerline:h11
 endif
