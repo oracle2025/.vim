@@ -26,6 +26,7 @@ Bundle 'tikhomirov/vim-glsl'
 Bundle 'Z1MM32M4N/vim-superman'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fugitive'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -41,10 +42,11 @@ filetype plugin on
 set hlsearch
 set autoindent
 
+set laststatus=2
+let g:airline_powerline_fonts = 1
 if has('gui_running')
 	colorscheme blue
-	let g:airline_theme='murmur'
-	let g:airline_powerline_fonts = 1
+	let g:airline_theme='simple'
 	set nu
 else
 	set t_Co=256
