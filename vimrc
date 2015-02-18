@@ -43,6 +43,8 @@ set autoindent
 
 if has('gui_running')
 	colorscheme blue
+	let g:airline_theme='murmur'
+	let g:airline_powerline_fonts = 1
 	set nu
 else
 	set t_Co=256
@@ -51,7 +53,8 @@ endif
 
 set cindent
 set foldmethod=syntax
-set guifont=FixedSC\ 10
+"set guifont=FixedSC\ 10
+set guifont=Ttyp0\ 10
 autocmd FileType cpp setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 copyindent preserveindent
 "map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 nmap <F4> :FSHere<cr>
