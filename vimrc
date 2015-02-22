@@ -27,6 +27,7 @@ Bundle 'Z1MM32M4N/vim-superman'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
+Bundle 'hsitz/VimOrganizer'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -73,3 +74,8 @@ if has("mac")
 	set guifont=Menlo\ for\ Powerline:h11
 	let g:airline_powerline_fonts = 1
 endif
+
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+au BufEnter *.org            call org#SetOrgFileType()
+
+let g:org_tags_alist='{@HOME(h) @TIROL(t)} {COMPUTER(c) PROJECT(p) READING(r)}'
