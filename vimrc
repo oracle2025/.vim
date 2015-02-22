@@ -71,4 +71,5 @@ smap SS <Plug>snipMateNextOrTrigger
 if has("mac")
 	let g:protodefctagsexe = '/usr/local/bin/ctags'
 	set guifont=Menlo\ for\ Powerline:h11
+	let g:airline_powerline_fonts = 1
 endif
