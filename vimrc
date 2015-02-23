@@ -28,14 +28,18 @@ Bundle 'edkolev/tmuxline.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'hsitz/VimOrganizer'
+Bundle 'mattn/calendar-vim'
+Bundle 'chrisbra/NrrwRgn'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
 "Bundle 'webBrowser'
 Bundle 'DoxygenToolkit.vim'
+Bundle 'utl.vim'
 
 " non github repos
 
+let g:ft_ignore_pat = '\.org'
 filetype plugin indent on     " required!
 filetype plugin on
 
@@ -79,3 +83,13 @@ au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
 au BufEnter *.org            call org#SetOrgFileType()
 
 let g:org_tags_alist='{@HOME(h) @TIROL(t)} {COMPUTER(c) PROJECT(p) READING(r)}'
+" let g:org_capture_file = '~/org_files/mycaptures.org'
+command! OrgCapture :call org#CaptureBuffer()
+command! OrgCaptureFile :call org#OpenCaptureFile()
+
+let g:org_agenda_select_dirs=["~/GTD"]
+let g:org_agenda_files = split(glob("~/GTD/org-mod*.org"),"\n")
+
+
+let g:org_command_for_emacsclient = 'emacsclient'
+
