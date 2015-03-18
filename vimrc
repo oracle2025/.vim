@@ -53,6 +53,7 @@ if has('gui_running')
 	colorscheme blue
 	let g:airline_theme='simple'
 	set nu
+	let g:airline#extensions#tmuxline#enabled = 0
 else
 	set t_Co=256
 	syntax on
@@ -83,7 +84,8 @@ au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
 au BufEnter *.org            call org#SetOrgFileType()
 
 let g:org_tags_alist='{@HOME(h) @TIROL(t)} {COMPUTER(c) PROJECT(p) READING(r)}'
-" let g:org_capture_file = '~/org_files/mycaptures.org'
+let g:org_todo_setup='TODO | DONE'
+let g:org_capture_file = '~/GTD/journal.org'
 command! OrgCapture :call org#CaptureBuffer()
 command! OrgCaptureFile :call org#OpenCaptureFile()
 
