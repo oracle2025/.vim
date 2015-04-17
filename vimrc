@@ -30,6 +30,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'hsitz/VimOrganizer'
 Bundle 'mattn/calendar-vim'
 Bundle 'chrisbra/NrrwRgn'
+Bundle 'nvie/vim-flake8'
+Bundle 'klen/python-mode'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -94,4 +96,10 @@ let g:org_agenda_files = split(glob("~/GTD/org-mod*.org"),"\n")
 
 
 let g:org_command_for_emacsclient = 'emacsclient'
-
+au BufRead,BufNewFile *py,*pyw set tabstop=8
+au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
+au BufRead,BufNewFile *.py,*.pyw set expandtab
+highlight BadWhitespace ctermbg=red guibg=red
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw set textwidth=79
