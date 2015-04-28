@@ -93,7 +93,7 @@ command! OrgCapture :call org#CaptureBuffer()
 command! OrgCaptureFile :call org#OpenCaptureFile()
 
 let g:org_agenda_select_dirs=["~/GTD"]
-let g:org_agenda_files = split(glob("~/GTD/org-mod*.org"),"\n")
+let g:org_agenda_files = split(glob("~/GTD/*.org"),"\n")
 
 
 let g:org_command_for_emacsclient = 'emacsclient'
@@ -104,3 +104,6 @@ highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
 au BufRead,BufNewFile *.py,*.pyw set textwidth=79
+
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
