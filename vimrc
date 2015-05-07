@@ -33,6 +33,8 @@ Bundle 'mattn/calendar-vim'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'nvie/vim-flake8'
 Bundle 'klen/python-mode'
+Bundle 'reedes/vim-pencil'
+Bundle 'junegunn/goyo.vim'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -107,3 +109,29 @@ au BufRead,BufNewFile *.py,*.pyw set textwidth=79
 
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
+let g:word_count="<unknown>"
+fun! WordCount()
+    return g:word_count
+endfun
+fun! UpdateWordCount()
+    let s = system("wc -w ".expand("%p"))
+    let parts = split(s, ' ')
+    if len(parts) > 1
+        let g:word_count = parts[0]
+    endif
+endfun
+
+augroup WordCounter
+    au! CursorHold * call UpdateWordCount()
+    au! CursorHoldI * call UpdateWordCount()
+augroup END
+
+" how eager are you? (default is 4000 ms)
+set updatetime=500
+
+let g:airline_section_x = '%{PencilMode()}'
+let g:airline_section_y = '%{WordCount()} words'
+augroup pencil
+	autocmd!
+	autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
+augroup END
