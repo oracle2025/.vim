@@ -35,6 +35,7 @@ Bundle 'nvie/vim-flake8'
 Bundle 'klen/python-mode'
 Bundle 'reedes/vim-pencil'
 Bundle 'junegunn/goyo.vim'
+Bundle 'NickLaMuro/vimux'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
