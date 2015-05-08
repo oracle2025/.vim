@@ -136,3 +136,5 @@ augroup pencil
 	autocmd!
 	autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
 augroup END
+
+nmap <F5> :call VimuxRunCommand("make")<cr>
