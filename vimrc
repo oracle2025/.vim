@@ -36,12 +36,15 @@ Bundle 'klen/python-mode'
 Bundle 'reedes/vim-pencil'
 Bundle 'junegunn/goyo.vim'
 Bundle 'NickLaMuro/vimux'
+Bundle 'terryma/vim-expand-region'
+Bundle 'christoomey/vim-tmux-navigator'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
 "Bundle 'webBrowser'
 Bundle 'DoxygenToolkit.vim'
 Bundle 'utl.vim'
+Bundle 'gitignore'
 
 " non github repos
 
@@ -72,7 +75,7 @@ set guifont=Ttyp0\ 10
 autocmd FileType cpp setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 copyindent preserveindent
 "map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 nmap <F4> :FSHere<cr>
-let mapleader = ","
+let mapleader = "\<Space>"
 
 imap SS <esc>a<Plug>snipMateNextOrTrigger
 smap SS <Plug>snipMateNextOrTrigger
@@ -138,3 +141,12 @@ augroup pencil
 augroup END
 
 nmap <F5> :call VimuxRunCommand("make")<cr>
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+nnoremap <CR> G
+nnoremap <BS> gg
+nnoremap <Leader>w :w<CR>
+nmap <Leader><Leader> V
+
