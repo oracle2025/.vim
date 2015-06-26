@@ -38,6 +38,7 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'NickLaMuro/vimux'
 Bundle 'terryma/vim-expand-region'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'scrooloose/syntastic'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -149,4 +150,15 @@ nnoremap <CR> G
 nnoremap <BS> gg
 nnoremap <Leader>w :w<CR>
 nmap <Leader><Leader> V
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+set guioptions-=T
 
