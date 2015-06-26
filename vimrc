@@ -162,3 +162,5 @@ let g:syntastic_check_on_wq = 0
 
 set guioptions-=T
 
+nnoremap <Leader>f :pyf /home/oracle/local/share/clang-format.py<cr>
+
