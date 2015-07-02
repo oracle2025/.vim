@@ -39,6 +39,7 @@ Bundle 'NickLaMuro/vimux'
 Bundle 'terryma/vim-expand-region'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'scrooloose/syntastic'
+Bundle 'fatih/vim-go'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
