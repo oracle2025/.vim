@@ -40,6 +40,7 @@ Bundle 'terryma/vim-expand-region'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'scrooloose/syntastic'
 Bundle 'fatih/vim-go'
+Bundle 'godlygeek/tabular'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -163,5 +164,10 @@ let g:syntastic_check_on_wq = 0
 
 set guioptions-=T
 
-nnoremap <Leader>f :pyf /home/oracle/local/share/clang-format.py<cr>
+nnoremap <Leader>f :pyf /usr/local/share/clang-format.py<cr>
+vnoremap <Leader>f <c-o>:pyf /usr/local/share/clang-format.py<cr>
+highlight NonText ctermfg=15
+
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
