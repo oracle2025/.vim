@@ -41,6 +41,8 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'scrooloose/syntastic'
 Bundle 'fatih/vim-go'
 Bundle 'godlygeek/tabular'
+Bundle 'freitass/todo.txt-vim'
+Bundle 'jpalardy/vim-slime'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -79,6 +81,7 @@ autocmd FileType cpp setlocal noexpandtab shiftwidth=4 softtabstop=0 tabstop=4 c
 "map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 nmap <F4> :FSHere<cr>
 let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
 
 imap SS <esc>a<Plug>snipMateNextOrTrigger
 smap SS <Plug>snipMateNextOrTrigger
@@ -170,4 +173,5 @@ highlight NonText ctermfg=15
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+let g:slime_target = "tmux"
 
