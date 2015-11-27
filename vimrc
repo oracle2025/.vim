@@ -43,6 +43,8 @@ Bundle 'fatih/vim-go'
 Bundle 'godlygeek/tabular'
 Bundle 'freitass/todo.txt-vim'
 Bundle 'jpalardy/vim-slime'
+Bundle 'vim-pandoc/vim-pandoc'
+Bundle 'vim-pandoc/vim-pandoc-syntax'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
