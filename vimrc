@@ -12,7 +12,7 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-vinegar'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'editorconfig/editorconfig-vim'
@@ -38,13 +38,13 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'NickLaMuro/vimux'
 Bundle 'terryma/vim-expand-region'
 Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 Bundle 'fatih/vim-go'
 Bundle 'godlygeek/tabular'
 Bundle 'freitass/todo.txt-vim'
 Bundle 'jpalardy/vim-slime'
-Bundle 'vim-pandoc/vim-pandoc'
-Bundle 'vim-pandoc/vim-pandoc-syntax'
+"Bundle 'vim-pandoc/vim-pandoc'
+"Bundle 'vim-pandoc/vim-pandoc-syntax'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -52,6 +52,7 @@ Bundle 'vim-pandoc/vim-pandoc-syntax'
 Bundle 'DoxygenToolkit.vim'
 Bundle 'utl.vim'
 Bundle 'gitignore'
+Bundle 'Mark--Karkat'
 
 " non github repos
 
@@ -121,28 +122,28 @@ au BufRead,BufNewFile *.py,*.pyw set textwidth=79
 
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
-let g:word_count="<unknown>"
-fun! WordCount()
-    return g:word_count
-endfun
-fun! UpdateWordCount()
-    let s = system("wc -w ".expand("%p"))
-    let parts = split(s, ' ')
-    if len(parts) > 1
-        let g:word_count = parts[0]
-    endif
-endfun
+"let g:word_count="<unknown>"
+"fun! WordCount()
+    "return g:word_count
+"endfun
+"fun! UpdateWordCount()
+    "let s = system("wc -w ".expand("%p"))
+    "let parts = split(s, ' ')
+    "if len(parts) > 1
+        "let g:word_count = parts[0]
+    "endif
+"endfun
 
-augroup WordCounter
-    au! CursorHold * call UpdateWordCount()
-    au! CursorHoldI * call UpdateWordCount()
-augroup END
+"augroup WordCounter
+    "au! CursorHold * call UpdateWordCount()
+    "au! CursorHoldI * call UpdateWordCount()
+"augroup END
 
 " how eager are you? (default is 4000 ms)
 set updatetime=500
 
 let g:airline_section_x = '%{PencilMode()}'
-let g:airline_section_y = '%{WordCount()} words'
+"let g:airline_section_y = '%{WordCount()} words'
 augroup pencil
 	autocmd!
 	autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
@@ -176,4 +177,37 @@ highlight NonText ctermfg=15
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:slime_target = "tmux"
+
+" let g:pandoc#modules#disabled = ["formatting"]
+"let g:pandoc#formatting#mode = "ha"
+"let g:pandoc#formatting#textwidth = 80
+hi SpellBad ctermfg=001
+"set formatoptions-=n
+
+" When loading a file, if it reads in as Unix, but has a DOS line ending,
+" and is not in binary mode, reload it in DOS format. Do this AFTER loading
+" last known position to prevent always opening on last line.
+"
+" Time out the search after 1/10 second. Timeouts only available in 7.1.211
+" and up, so just risk long loads in earlier versions.
+if (v:version > 701 || v:version == 701 && has("patch211"))
+  autocmd BufReadPost * nested
+        \ if !exists('b:reload_dos') && !&binary && &ff=='unix' && (0 < search('\r$', 'nc', 0, 100)) |
+        \   let b:reload_dos = 1 |
+        \   redir => s:num_dos_ends |
+        \   silent %s#\r$##n |
+        \   redir END |
+        \   e ++ff=dos |
+        \   echomsg "File has ".
+        \     substitute(s:num_dos_ends, '^\_.\{-}\(\d\+\).*', '\1', '').
+        \     " DOS-style line endings out of ".line('$')." lines." |
+        \ endif
+else
+  autocmd BufReadPost * nested
+        \ if !exists('b:reload_dos') && !&binary && &ff=='unix' && (0 < search('\r$', 'nc')) |
+        \   let b:reload_dos = 1 |
+        \   e ++ff=dos |
+        \ endif
+endif
+autocmd BufReadPost * if exists('b:reload_dos') | unlet b:reload_dos | endif
 
