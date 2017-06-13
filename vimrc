@@ -2,12 +2,12 @@ set shell=/bin/sh
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 
 " My Bundles here:
 "
@@ -56,6 +56,7 @@ Bundle 'Mark--Karkat'
 
 " non github repos
 
+call vundle#end()
 let g:ft_ignore_pat = '\.org'
 filetype plugin indent on     " required!
 filetype plugin on
