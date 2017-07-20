@@ -142,6 +142,7 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 " how eager are you? (default is 4000 ms)
 set updatetime=500
+set directory=~/.vim/swapfiles//
 
 let g:airline_section_x = '%{PencilMode()}'
 "let g:airline_section_y = '%{WordCount()} words'
