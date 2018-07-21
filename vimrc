@@ -28,12 +28,13 @@ Bundle 'Z1MM32M4N/vim-superman'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/rhubarb.vim'
 Bundle 'hsitz/VimOrganizer'
 Bundle 'mattn/calendar-vim'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'nvie/vim-flake8'
-Bundle 'klen/python-mode'
-Bundle 'reedes/vim-pencil'
+"Bundle 'klen/python-mode'
+"Bundle 'reedes/vim-pencil'
 Bundle 'junegunn/goyo.vim'
 Bundle 'NickLaMuro/vimux'
 Bundle 'terryma/vim-expand-region'
@@ -43,8 +44,10 @@ Bundle 'fatih/vim-go'
 Bundle 'godlygeek/tabular'
 Bundle 'freitass/todo.txt-vim'
 Bundle 'jpalardy/vim-slime'
+Bundle 'dhruvasagar/vim-table-mode'
 "Bundle 'vim-pandoc/vim-pandoc'
 "Bundle 'vim-pandoc/vim-pandoc-syntax'
+Bundle 'timheap/linters.vim'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -143,12 +146,12 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " how eager are you? (default is 4000 ms)
 set updatetime=500
 
-let g:airline_section_x = '%{PencilMode()}'
+"let g:airline_section_x = '%{PencilMode()}'
 "let g:airline_section_y = '%{WordCount()} words'
-augroup pencil
-	autocmd!
-	autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
-augroup END
+"augroup pencil
+	"autocmd!
+	"autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
+"augroup END
 
 nmap <F5> :call VimuxRunCommand("make")<cr>
 
@@ -178,6 +181,9 @@ highlight NonText ctermfg=15
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:slime_target = "tmux"
+
+let g:table_mode_corner_corner='+'
+let g:table_mode_header_fillchar='='
 
 " let g:pandoc#modules#disabled = ["formatting"]
 "let g:pandoc#formatting#mode = "ha"
@@ -211,4 +217,52 @@ else
         \ endif
 endif
 autocmd BufReadPost * if exists('b:reload_dos') | unlet b:reload_dos | endif
+
+
+
+"inoremap <F2> <Esc>:call UTestToggle()<CR>
+"nnoremap <F2> :call UTestToggle()<CR>
+
+"autocmd FileType python unmap! <F4>
+autocmd FileType python nmap <F4> :call UTestToggle()<cr>
+
+function! UTestToggle()
+python << EOF
+# toggles between a path like: /myproject/person.py and /myproject/test/utest_person.py
+# could mkdir the 'test' directory if not exists, but chances are the user will
+# be doing that outside of vim anyway.
+import vim
+from os import path
+
+UTEST_PREFIX='test_'
+def edit(target):
+# first try to load from buffer
+	for buf in vim.buffers:
+		if target == buf.name:
+			vim.command('b!%s' % buf.number)
+			return
+# must not be in buffers, open file
+	vim.command('e! %s' % target)
+	return
+
+curfile = vim.current.buffer.name
+if UTEST_PREFIX in curfile:
+# switch to the matching source
+	edit(curfile.replace(UTEST_PREFIX, ''))
+else:
+# switch to the matching utest_filename.py|qpy
+	filepath, filename = path.split(curfile)
+	edit(path.join(filepath, UTEST_PREFIX+filename))
+EOF
+endfunction
+
+let g:linters_extra = []
+
+if executable("markdownlint")
+	" Example
+	" README.md: 3: MD013/line-length Line length [Expected: 80; Actual: 90]
+	let g:linters_extra += [
+	    \   ['markdown', 'markdownlint %s > %s', ["%f: %l: %m"]],
+	    \]
+endif
 
