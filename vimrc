@@ -28,7 +28,6 @@ Bundle 'Z1MM32M4N/vim-superman'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/rhubarb.vim'
 Bundle 'hsitz/VimOrganizer'
 Bundle 'mattn/calendar-vim'
 Bundle 'chrisbra/NrrwRgn'
@@ -45,9 +44,14 @@ Bundle 'godlygeek/tabular'
 Bundle 'freitass/todo.txt-vim'
 Bundle 'jpalardy/vim-slime'
 Bundle 'dhruvasagar/vim-table-mode'
+Bundle 'ctrlpvim/ctrlp.vim'
+Bundle 'tpope/vim-dispatch'
+Bundle 'alepez/vim-gtest'
+Bundle 'mileszs/ack.vim'
+Bundle 'Olical/vim-enmasse'
 "Bundle 'vim-pandoc/vim-pandoc'
 "Bundle 'vim-pandoc/vim-pandoc-syntax'
-Bundle 'timheap/linters.vim'
+"Bundle 'timheap/linters.vim'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -147,7 +151,7 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 set updatetime=500
 
 "let g:airline_section_x = '%{PencilMode()}'
-"let g:airline_section_y = '%{WordCount()} words'
+"let g:airline_section_y = '%{wordcount().words} words'
 "augroup pencil
 	"autocmd!
 	"autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
@@ -158,7 +162,7 @@ nmap <F5> :call VimuxRunCommand("make")<cr>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-nnoremap <CR> G
+"nnoremap <CR> G
 nnoremap <BS> gg
 nnoremap <Leader>w :w<CR>
 nmap <Leader><Leader> V
@@ -265,4 +269,24 @@ if executable("markdownlint")
 	    \   ['markdown', 'markdownlint %s > %s', ["%f: %l: %m"]],
 	    \]
 endif
+
+augroup GTest
+	autocmd FileType cpp nnoremap <silent> <leader>tt :GTestRun<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tu :GTestRunUnderCursor<CR>
+	autocmd FileType cpp nnoremap          <leader>tc :GTestCase<space>
+	autocmd FileType cpp nnoremap          <leader>tn :GTestName<space>
+	autocmd FileType cpp nnoremap <silent> <leader>te :GTestToggleEnabled<CR>
+	autocmd FileType cpp nnoremap <silent> ]T         :GTestNext<CR>
+	autocmd FileType cpp nnoremap <silent> [T         :GTestPrev<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tf :CtrlPGTest<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tj :GTestJump<CR>
+	autocmd FileType cpp nnoremap          <leader>ti :GTestNewTest<CR>i
+	autocmd FileType cpp nmap <F3> :GTestJump<CR>
+augroup END
+
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
 
