@@ -50,6 +50,8 @@ Bundle 'tpope/vim-dispatch'
 Bundle 'alepez/vim-gtest'
 Bundle 'mileszs/ack.vim'
 Bundle 'Olical/vim-enmasse'
+Bundle 'vimoutliner/vimoutliner'
+Bundle 'vim-voom/VOoM'
 "Bundle 'vim-pandoc/vim-pandoc'
 "Bundle 'vim-pandoc/vim-pandoc-syntax'
 "Bundle 'timheap/linters.vim'
@@ -62,6 +64,7 @@ Bundle 'utl.vim'
 Bundle 'gitignore'
 Bundle 'Mark--Karkat'
 Bundle 'junegunn/fzf.vim'
+Bundle 'restore_view.vim'
 
 " non github repos
 
@@ -131,6 +134,7 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
 au BufRead,BufNewFile *.py,*.pyw set textwidth=79
 
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
 
 "let g:word_count="<unknown>"
 "fun! WordCount()
@@ -303,3 +307,6 @@ endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 nnoremap ä <C-]>
+au FileType vo_base :Voom vimoutliner
+au BufEnter *.otl setlocal tabstop=2
+au BufEnter *.otl setlocal shiftwidth=2
