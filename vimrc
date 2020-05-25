@@ -1,0 +1,10 @@
+set wrap
+set linebreak
+set formatoptions=nt
+set textwidth=80
+set wrapmargin=0
+set noautoindent
+set nocindent
+set nosmartindent
+set indentexpr=
+set backspace=indent,eol,start
