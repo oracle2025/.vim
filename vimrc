@@ -9,6 +9,14 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'vimoutliner/vimoutliner'
+Plugin 'restore_view.vim'
+Plugin 'habamax/vim-asciidoctor'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tpope/vim-vinegar'
+Plugin 'preservim/nerdcommenter'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'dense-analysis/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -27,3 +35,18 @@ set nocindent
 set nosmartindent
 set indentexpr=
 set backspace=indent,eol,start
+
+let g:asciidoctor_folding = 1
+
+autocmd FileType asciidoctor setlocal spell
+autocmd FileType asciidoctor syntax on
+
+
+let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
+
+set colorcolumn=80
+set hlsearch
+nnoremap <Leader>w :w<CR>
+set directory=~/.vim/swapfiles//
+
